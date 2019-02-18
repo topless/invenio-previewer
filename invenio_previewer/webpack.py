@@ -22,5 +22,26 @@
 # waive the privileges and immunities granted to it by virtue of its status
 # as an Intergovernmental Organization or submit itself to any jurisdiction.
 
--e git+https://github.com/inveniosoftware/invenio-files-rest.git#egg=invenio-files-rest
--e git+https://github.com/inveniosoftware/invenio-records-ui.git#egg=invenio-records-ui
+"""JS/CSS bundles for Previewer."""
+
+from __future__ import absolute_import, print_function
+
+from flask_webpackext import WebpackBundle
+
+previewer = WebpackBundle(
+    __name__,
+    'assets',
+    entry={
+        'previewer_app': './js/invenio_previewer/app.js',
+        'previewer_theme': './scss/invenio_previewer/theme.scss',
+    },
+    dependencies={
+        'jquery': '~3.3.1',
+        "bootstrap": '~3.3.6',
+        "font-awesome": '~4.5.0',
+        'd3': '^3.5.17',
+        'flightjs': '~1.5.1',
+        'pdfjs-dist': '1.4.192',
+        'prismjs': '1.4.1'
+    }
+)

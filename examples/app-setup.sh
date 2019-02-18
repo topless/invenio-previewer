@@ -26,7 +26,8 @@ npm install
 cd ..
 
 flask collect -v
-flask assets build
+flask webpack buildall
+# flask assets build
 
 flask fixtures
 flask run
