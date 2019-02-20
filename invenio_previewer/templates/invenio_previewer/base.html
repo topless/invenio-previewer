@@ -25,7 +25,6 @@
 
 <!DOCTYPE html>
 <html>
-
   <head>
     <title>{{_('Preview')}}</title>
     <link rel='shortcut icon' type='image/x-icon' href='/static/favicon.ico' />
@@ -43,7 +42,9 @@
       {{ webpack['i18n_app.js'] }}
       {{ webpack['previewer_app.js'] }}
       {{ webpack['previewer_theme.js'] }}
+      {% for bundle in js_bundles %}
+        {{ webpack[bundle] }}
+      {% endfor %}
     {%- endblock %}
   </body>
-
 </html>

@@ -6,5 +6,5 @@
  * under the terms of the MIT License; see LICENSE file for more details.
  */
 
-// import './csv_previewer/';
-// import './pdfjs';
+import Prism from 'prismjs';
+Prism.highlightAll();

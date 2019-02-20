@@ -73,6 +73,5 @@ def preview(file):
         'invenio_previewer/xml_prismjs.html',
         file=file,
         content=render(file),
-        js_bundles=['previewer_prism_js'],
-        css_bundles=['previewer_prism_css'],
+        js_bundles=['prism_js.js'],
     )

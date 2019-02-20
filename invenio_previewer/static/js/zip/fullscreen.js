@@ -17,55 +17,54 @@
  * 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
  */
 
-var f = document.getElementById('preview-iframe');
+(function enableFullscreen() {
+  var f = window.parent.document.getElementById("preview-iframe");
 
-if (f) {
-  var handleFullScreenClick = (function () {
-    var isFullScreen = false;
-
-    var pos = f.style.position,
+  if (f) {
+    var handleFullScreenClick = (function() {
+      var isFullScreen = false;
+      var pos = f.style.position,
         zIndex = f.style.zIndex,
         height = f.style.height,
         width = f.style.width,
         top = f.style.top,
         left = f.style.left,
         backgroundColor = f.style.backgroundColor;
+      return function() {
+        if (isFullScreen) {
+          isFullScreen = false;
+          f.style.position = pos;
+          f.style.zIndex = zIndex;
+          f.style.height = height;
+          f.style.width = width;
+          f.style.top = top;
+          f.style.left = left;
+          f.style.backgroundColor = backgroundColor;
+          window.parent.document.body.style.overflow = "";
+        } else {
+          isFullScreen = true;
+          f.style.position = "fixed";
+          f.style.zIndex = 9999;
+          f.style.height = "100%";
+          f.style.width = "100%";
+          f.style.top = 0;
+          f.style.left = 0;
+          f.style.backgroundColor = "white";
+          window.parent.document.body.style.overflow = "hidden";
+        }
+      };
+    })();
 
-    return function () {
-      if (isFullScreen) {
-        isFullScreen = false;
-        f.style.position = pos;
-        f.style.zIndex = zIndex;
-        f.style.height = height;
-        f.style.width = width;
-        f.style.top = top;
-        f.style.left = left;
-        f.style.backgroundColor = backgroundColor;
+    var fsbtn = f.contentDocument.getElementById("fullScreenMode");
+    if (fsbtn) {
+      fsbtn.addEventListener("click", handleFullScreenClick);
+      fsbtn.classList.remove("hidden");
+    }
 
-        document.body.style.overflow = "";
-      } else {
-        isFullScreen = true;
-        f.style.position = "fixed";
-        f.style.zIndex = 9999;
-        f.style.height = "100%";
-        f.style.width = "100%";
-        f.style.top = 0;
-        f.style.left = 0;
-        f.style.backgroundColor="white";
-
-        document.body.style.overflow = "hidden";
-      }
-    };
-  }());
-
-  var fsbtn = f.contentDocument.getElementById('fullScreenMode');
-  var secfsbtn = f.contentDocument.getElementById('secondaryFullScreenMode');
-  if (fsbtn) fsbtn.addEventListener('click', handleFullScreenClick);
-  if (secfsbtn) secfsbtn.addEventListener('click', handleFullScreenClick);
-} else {
-  var fsbtn = document.getElementById('fullScreenMode');
-  var secfsbtn = document.getElementById('secondaryFullScreenMode');
-
-  if (fsbtn) fsbtn.remove();
-  if (secfsbtn) secfsbtn.remove();
-}
+    var secfsbtn = f.contentDocument.getElementById("secondaryFullScreenMode");
+    if (secfsbtn) {
+      secfsbtn.addEventListener("click", handleFullScreenClick)
+      secfsbtn.classList.remove("hidden");
+    }
+  }
+})();
