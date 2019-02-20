@@ -1,4 +1,4 @@
-{# -*- coding: utf-8 -*-
+# -*- coding: utf-8 -*-
 #
 # This file is part of Invenio.
 # Copyright (C) 2016 CERN.
@@ -21,16 +21,27 @@
 # In applying this license, CERN does not
 # waive the privileges and immunities granted to it by virtue of its status
 # as an Intergovernmental Organization or submit itself to any jurisdiction.
-#}
 
-{%- from "invenio_previewer/_macros.html" import preview_file %}
+"""JS/CSS bundles for Previewer."""
 
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>Example</title>
-  </head>
-  <body>
-    {{ preview_file(file) }}
-  </body>
-</html>
+from __future__ import absolute_import, print_function
+
+from flask_webpackext import WebpackBundle
+
+previewer = WebpackBundle(
+    __name__,
+    'static',
+    entry={
+        'previewer_app': './js/app.js',
+        'previewer_theme': './scss/style.scss',
+    },
+    dependencies={
+        'bootstrap-sass': '~3.4.0',
+        'd3': '^3.5.17',
+        'flightjs': '~1.5.1',
+        'font-awesome': '~4.5.0',
+        'jquery': '^3.3.1',
+        'pdfjs-dist': '^2.0.943',
+        'prismjs': '^1.15.0',
+    }
+)
