@@ -15,6 +15,8 @@ pip install -r requirements.txt
 
 ./app-teardown.sh
 
+mkdir instance
+
 # Create the database
 flask db init
 flask db create
