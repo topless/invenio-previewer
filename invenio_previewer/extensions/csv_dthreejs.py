@@ -75,6 +75,5 @@ def preview(file):
         file=file,
         delimiter=file_info['delimiter'],
         encoding=file_info['encoding'],
-        js_bundles=current_previewer.js_bundles + ['previewer_csv_js'],
-        css_bundles=current_previewer.css_bundles,
+        js_bundles=['d3_csv.js'],
     )

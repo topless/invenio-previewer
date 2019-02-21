@@ -16,45 +16,39 @@
  * along with Invenio; if not, write to the Free Software Foundation, Inc.,
  * 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
  */
-'use strict';
 
-define(function(require) {
+import flight from "flightjs";
 
-  var $ = require('node_modules/jquery/jquery'),
-      d3 = require('node_modules/d3/d3');
+function Loader() {
+  var Loader;
 
-  return require('node_modules/flightjs/build/flight').component(Loader);
+  this.handleShowLoader = function(ev, data) {
+    if (data.id === Loader.id) {
+      this.$node.show();
+    }
+  };
 
-  function Loader() {
-    var Loader;
+  this.handleHideLoader = function(ev, data) {
+    if (data.id === Loader.id) {
+      this.$node.hide();
+    }
+  };
 
-    this.handleShowLoader = function (ev, data) {
-      if (data.id === Loader.id){
-        this.$node.show();
-      }
-    };
+  this.after("initialize", function() {
+    Loader = this;
+    Loader.id = Loader.$node.data("csv-target");
 
-    this.handleHideLoader = function (ev, data) {
-      if (data.id === Loader.id){
-        this.$node.hide();
-      }
-    };
-
-    this.after('initialize', function () {
-      Loader = this;
-      Loader.id = Loader.$node.data('csv-target');
-
-      Loader.on(document, 'showLoader', Loader.handleShowLoader);
-      Loader.on(document, 'hideLoader', Loader.handleHideLoader);
-      Loader.on('click', function (ev) {
-        ev.preventDefault();
-        Loader.trigger(document, 'loadNext', {
-          id: Loader.id
-        });
+    Loader.on(document, "showLoader", Loader.handleShowLoader);
+    Loader.on(document, "hideLoader", Loader.handleHideLoader);
+    Loader.on("click", function(ev) {
+      ev.preventDefault();
+      Loader.trigger(document, "loadNext", {
+        id: Loader.id,
       });
-
-      Loader.$node.hide();
     });
-  }
 
-});
+    Loader.$node.hide();
+  });
+}
+
+export default flight.component(Loader);

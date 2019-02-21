@@ -32,9 +32,9 @@ previewer = WebpackBundle(
     __name__,
     'static',
     entry={
-        'previewer_app': './js/app.js',
+        'd3_csv': './js/csv_previewer/init.js',
         'previewer_theme': './scss/style.scss',
-        'fullscreen_js': './js/zip/fullscreen.js',
+        'fullscreen_js': './js/fullscreen.js',
         'prism_js': './js/prismjs.js',
         'prism_css': './scss/prismjs.scss'
     },
