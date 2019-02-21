@@ -31,6 +31,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     {%- block head %}
       {{ webpack['previewer_theme.css'] }}
+      {% for bundle in css_bundles %}
+        {{ webpack[bundle] }}
+      {% endfor %}
     {%- endblock %}
   </head>
 

@@ -74,4 +74,5 @@ def preview(file):
         file=file,
         content=render(file),
         js_bundles=['prism_js.js'],
+        css_bundles=['prism_css.css']
     )
