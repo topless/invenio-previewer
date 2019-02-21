@@ -43,9 +43,7 @@ def preview(file):
     return render_template(
         'invenio_previewer/pdfjs.html',
         file=file,
-        css_bundles=['previewer_pdfjs_css'],
-        js_bundles=[
-            'previewer_pdfjs_js',
-            'previewer_fullscreen_js'
-        ] + current_previewer.js_bundles,
+        html_tags='dir="ltr" mozdisallowselectionprint moznomarginboxes',
+        js_bundles=['pdfjs_js.js', 'fullscreen_js.js'],
+        css_bundles=['pdfjs_css.css'],
     )

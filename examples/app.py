@@ -123,6 +123,7 @@ def fixtures():
         'jsonfile.json',
         'xmlfile.xml',
         'notebook.ipynb',
+        'pdffile.pdf',
         'jpgfile.jpg',
         'pngfile.png',
     )

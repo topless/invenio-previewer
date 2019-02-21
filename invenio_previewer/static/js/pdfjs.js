@@ -6,6 +6,5 @@
  * under the terms of the MIT License; see LICENSE file for more details.
  */
 
-import './l10n';
-import './viewer';
-
+import './pdfjs/l10n';
+import './pdfjs/viewer';

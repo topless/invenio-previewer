@@ -36,7 +36,9 @@ previewer = WebpackBundle(
         'previewer_theme': './scss/style.scss',
         'fullscreen_js': './js/fullscreen.js',
         'prism_js': './js/prismjs.js',
-        'prism_css': './scss/prismjs.scss'
+        'prism_css': './scss/prismjs.scss',
+        'pdfjs_js': './js/pdfjs.js',
+        'pdfjs_css': './scss/pdfjs.scss',
     },
     dependencies={
         'bootstrap-sass': '~3.4.0',
@@ -44,7 +46,7 @@ previewer = WebpackBundle(
         'flightjs': '~1.5.1',
         'font-awesome': '~4.5.0',
         'jquery': '^3.3.1',
-        'pdfjs-dist': '^2.0.943',
+        'pdfjs-dist': '^1.4.192',
         'prismjs': '^1.15.0',
     }
 )
