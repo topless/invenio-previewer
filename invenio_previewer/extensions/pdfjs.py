@@ -44,6 +44,9 @@ def preview(file):
         'invenio_previewer/pdfjs.html',
         file=file,
         html_tags='dir="ltr" mozdisallowselectionprint moznomarginboxes',
-        js_bundles=['pdfjs_js.js', 'fullscreen_js.js'],
         css_bundles=['pdfjs_css.css'],
+        js_bundles=current_previewer.js_bundles + [
+            'pdfjs_js.js',
+            'fullscreen_js.js'
+        ]
     )

@@ -30,6 +30,7 @@ import xml.dom.minidom
 
 from flask import current_app, render_template
 
+from ..proxies import current_previewer
 from ..utils import detect_encoding
 
 previewable_extensions = ['xml']
@@ -73,6 +74,6 @@ def preview(file):
         'invenio_previewer/xml_prismjs.html',
         file=file,
         content=render(file),
-        js_bundles=['prism_js.js'],
+        js_bundles=current_previewer.js_bundles + ['prism_js.js'],
         css_bundles=['prism_css.css']
     )

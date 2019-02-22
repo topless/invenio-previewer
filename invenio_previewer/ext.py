@@ -88,11 +88,11 @@ class _InvenioPreviewerState(object):
 
     @property
     def css_bundles(self):
-        return []
+        return self.app.config['PREVIEWER_BASE_CSS_BUNDLES']
 
     @property
     def js_bundles(self):
-        return []
+        return self.app.config['PREVIEWER_BASE_JS_BUNDLES']
 
     def register_previewer(self, name, previewer):
         """Register a previewer in the system."""

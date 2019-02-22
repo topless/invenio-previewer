@@ -31,9 +31,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     {%- block head %}
-      {{ webpack['previewer_theme.css'] }}
-      {% for bundle in css_bundles %}
-        {{ webpack[bundle] }}
+      {% for css_bundle in css_bundles %}
+        {{ webpack[css_bundle] }}
       {% endfor %}
     {%- endblock %}
   </head>
@@ -43,11 +42,8 @@
 
     {%- block javascript %}
       {{ webpack['manifest.js'] }}
-      {{ webpack['vendor.js'] }}
-      {{ webpack['i18n_app.js'] }}
-      {{ webpack['previewer_theme.js'] }}
-      {% for bundle in js_bundles %}
-        {{ webpack[bundle] }}
+      {% for js_bundle in js_bundles %}
+        {{ webpack[js_bundle] }}
       {% endfor %}
     {%- endblock %}
   </body>
